@@ -66,6 +66,7 @@ const Products = () => {
       <Box
         display="grid"
         gridTemplateColumns="repeat(auto-fit, minmax(300px, 1fr))"
+        justifyItems={"center"}
         gap="20px"
         mt={"20px"}
       >

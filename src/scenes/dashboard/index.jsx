@@ -18,7 +18,7 @@ const Dashboard = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
-  const total = dataTransaksi[0].data.reduce((sum, item) => sum + item.y, 0); 
+  const total = dataTransaksi[0].data.reduce((sum, item) => sum + item.y, 0);
   const formatRupiah = (value) =>
     new Intl.NumberFormat("id-ID", {
       style: "currency",
@@ -38,9 +38,13 @@ const Dashboard = () => {
             sx={{
               backgroundColor: colors.blueAccent[700],
               color: colors.grey[100],
-              fontSize: "14px",
+              fontSize: {
+                xs: "10px",
+              },
               fontWeight: "bold",
-              padding: "10px 25px",
+              padding: {
+                xs: "10px 15px",
+              },
             }}
           >
             <DownloadOutlinedIcon sx={{ mr: "10px" }} />
@@ -52,14 +56,27 @@ const Dashboard = () => {
       {/* GRID & CHARTS */}
       <Box
         display="grid"
-        gridTemplateColumns="repeat(12, 1fr)"
+        sx={{
+          gridTemplateColumns: {
+            xs: "1fr",
+            sm: "1fr",
+            md: "repeat(12, 1fr)",
+            lg: "repeat(12, 1fr)",
+          },
+        }}
         gridAutoRows="140px"
         gap="20px"
         mt={"20px"}
       >
         {/* ROW 1 */}
         <Box
-          gridColumn="span 4"
+          sx={{
+            gridColumn: {
+              xs: "span 12",
+              md: "span 4",
+              lg: "span 4",
+            },
+          }}
           backgroundColor={colors.primary[400]}
           display="flex"
           alignItems="center"
@@ -79,7 +96,13 @@ const Dashboard = () => {
         </Box>
 
         <Box
-          gridColumn="span 4"
+          sx={{
+            gridColumn: {
+              xs: "span 12",
+              md: "span 4",
+              lg: "span 4",
+            },
+          }}
           backgroundColor={colors.primary[400]}
           display="flex"
           alignItems="center"
@@ -99,7 +122,13 @@ const Dashboard = () => {
         </Box>
 
         <Box
-          gridColumn="span 4"
+          sx={{
+            gridColumn: {
+              xs: "span 12",
+              md: "span 4",
+              lg: "span 4",
+            },
+          }}
           backgroundColor={colors.primary[400]}
           display="flex"
           alignItems="center"
@@ -120,8 +149,11 @@ const Dashboard = () => {
 
         {/* ROW 2 */}
         <Box
-          gridColumn="span 12"
-          gridRow="span 2"
+          sx={{
+            gridColumn: { xs: "span 12" },
+            gridRow: { xs: "span 2" },
+            height: "max-content",
+          }}
           backgroundColor={colors.primary[400]}
         >
           <Box
@@ -155,14 +187,17 @@ const Dashboard = () => {
               </IconButton>
             </Box>
           </Box>
-          <Box height="250px" m="-20px 0 0 0">
+          <Box height="250px" m="-20px 0 0 0" width={"100%"} sx={{ }}>
             <LineChart isDashboard={true} data={mockLineData} />
           </Box>
         </Box>
 
         <Box
-          gridColumn="span 12"
-          gridRow="span 2"
+          sx={{
+            gridColumn: { xs: "span 12" },
+            gridRow: { xs: "span 2" },
+            height: "max-content",
+          }}
           backgroundColor={colors.primary[400]}
         >
           <Box

@@ -57,6 +57,10 @@ const Sidebar = () => {
           xs: mobilePosition,
           md: "relative"
         },
+        marginRight : {
+          xs : "20px",
+          md: "20px"
+        },
         top: {
           xs: mobilePosition == "absolute" ? 0 : "auto",
           md: "auto",

@@ -111,7 +111,11 @@ export const DetailCard = () => {
       >
         <Box
           display={"grid"}
-          gridTemplateColumns={"repeat(2, 1fr)"}
+          sx={{ 
+            xs: {gridTemplateColumns: "1fr"},
+            md: {gridTemplateColumns: "1fr"},
+            lg: {gridTemplateColumns: "repeat(2, 1fr)"},
+           }}
           gap={"40px"}
         >
           <Box
@@ -123,7 +127,7 @@ export const DetailCard = () => {
             <Box
               sx={{
                 width: "100%",
-                height: "600px",
+                xs: {height: "200px"},
                 borderRadius: "5px",
                 overflow: "hidden",
                 cursor: "pointer",
@@ -136,7 +140,7 @@ export const DetailCard = () => {
           <Box
             display={"flex"}
             flexDirection={"column"}
-            gap={"40px"}
+            gap={"30px"}
             width={"100%"}
             height={"100%"}
           >

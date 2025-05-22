@@ -55,11 +55,14 @@ const Team = () => {
       renderCell: ({ row: { access } }) => {
         return (
           <Box
+            sx={{
+              p: "5px 30px",
+            }}
             width="60%"
             m="0 auto"
-            p="5px"
             display="flex"
             justifyContent="center"
+            alignItems={"center"}
             backgroundColor={
               access === "admin"
                 ? colors.greenAccent[600]
@@ -69,9 +72,34 @@ const Team = () => {
             }
             borderRadius="4px"
           >
-            {access === "admin" && <AdminPanelSettingsOutlinedIcon />}
-            {access === "marketing" && <EqualizerOutlinedIcon />}
-            <Typography color={colors.grey[100]} sx={{ ml: "5px" }}>
+            {access === "admin" && (
+              <AdminPanelSettingsOutlinedIcon
+                sx={{
+                  fontSize: {
+                    xs: "17px",
+                  },
+                }}
+              />
+            )}
+            {access === "marketing" && (
+              <EqualizerOutlinedIcon
+                sx={{
+                  fontSize: {
+                    xs: "17px",
+                  },
+                }}
+              />
+            )}
+            <Typography
+              color={colors.grey[100]}
+              sx={{
+                ml: "5px",
+                fontSize: {
+                  xs: "12px",
+                  md: "24px",
+                },
+              }}
+            >
               {access}
             </Typography>
           </Box>
@@ -109,6 +137,7 @@ const Team = () => {
         sx={{
           "& .MuiDataGrid-root": {
             border: "none",
+            minWidth: "900px",
           },
           "& .MuiDataGrid-cell": {
             borderBottom: "none",
@@ -130,6 +159,8 @@ const Team = () => {
           "& .MuiCheckbox-root": {
             color: `${colors.greenAccent[200]} !important`,
           },
+          overflowX: "auto",
+          minWidth: "100%",
         }}
       >
         <DataGrid checkboxSelection rows={mockDataTeam} columns={columns} />
@@ -153,7 +184,6 @@ export const AddUser = () => {
         onSubmit={handleFormSubmit}
         initialValues={initialValues}
         validationSchema={checkoutSchema}
-        
       >
         {({
           values,
@@ -167,6 +197,7 @@ export const AddUser = () => {
             <Box
               display="grid"
               gap="30px"
+              mt={"20px"}
               gridTemplateColumns="repeat(4, minmax(0, 1fr))"
               sx={{
                 "& > div": { gridColumn: isNonMobile ? undefined : "span 4" },
@@ -225,22 +256,22 @@ export const AddUser = () => {
                 sx={{ gridColumn: "span 4" }}
               />
 
-                <FormControl variant="filled" sx={{ gridColumn: "span 4" }} >
-                  <InputLabel id="demo-simple-select-filled-label">
-                    Age
-                  </InputLabel>
-                  <Select
-                    labelId="demo-simple-select-filled-label"
-                    onBlur={handleBlur}
-                    onChange={handleChange}
-                    name="select"
-                    error={!!touched.select && !!errors.select}
-                    helperText={touched.select && errors.select}
-                  >
-                    <MenuItem value={'admin'}>Admin</MenuItem>
-                    <MenuItem value={'marketing'}>Marketing</MenuItem>
-                  </Select>
-                </FormControl>
+              <FormControl variant="filled" sx={{ gridColumn: "span 4" }}>
+                <InputLabel id="demo-simple-select-filled-label">
+                  Age
+                </InputLabel>
+                <Select
+                  labelId="demo-simple-select-filled-label"
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  name="select"
+                  error={!!touched.select && !!errors.select}
+                  helperText={touched.select && errors.select}
+                >
+                  <MenuItem value={"admin"}>Admin</MenuItem>
+                  <MenuItem value={"marketing"}>Marketing</MenuItem>
+                </Select>
+              </FormControl>
             </Box>
             <Box display="flex" justifyContent="end" mt="20px">
               <Button type="submit" color="secondary" variant="contained">
